@@ -23,12 +23,12 @@
   {
    "fieldname": "target_quantity",
    "fieldtype": "Int",
-   "label": "Target Quantity"
+   "label": "Targeted Quantity"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-10 15:46:27.687275",
+ "modified": "2024-12-10 17:27:08.744810",
  "modified_by": "Administrator",
  "module": "Bluarmor Lite",
  "name": "Trace Sale",
