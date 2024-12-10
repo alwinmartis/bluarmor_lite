@@ -7,6 +7,7 @@ app_license = "agpl-3.0"
 
 # Apps
 # ------------------
+export_python_type_annotations = True
 
 # required_apps = []
 
