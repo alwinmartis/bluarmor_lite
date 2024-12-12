@@ -1,19 +1,27 @@
 <template>
     <div>
         Welcome to Bluarmor App!
+        <div class="flex items-center justify-between" v-for ="target in salestarget.data" :key="target">
+          {{ target.name }}{{ target.target_quantity }}{{ target.from_date }} {{ target.to_date }}<br>
+        </div>
+
+        <button variant="solid"theme="blue">Add</button>
     </div>
   </template>
 
   <script setup>
+  import { computed } from "vue";
   import { createListResource } from "frappe-ui";
-//   import {sessionUser} from "../data/session";
+  import {sessionUser} from "../data/session";
 
-  const salestarger = createListResource({
-    doctype: "Trace Sale",
-    fields:["target_quantity","from_date","to_date"],
-    auto:true,
-    onSuccess(d){
-       console.log(d);
-  }
+  let salestarget = createListResource({
+    doctype: 'Trace Sale',
+    fields:['name','target_quantity','from_date','to_date'],
+    orderBy:'creation Desc',
+    onSuccess(s){
+      console.log(s)
+    }
   })
+  salestarget.fetch()
+
 </script>
