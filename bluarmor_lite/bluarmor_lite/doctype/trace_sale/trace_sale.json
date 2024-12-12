@@ -7,7 +7,8 @@
  "field_order": [
   "from_date",
   "to_date",
-  "target_quantity"
+  "target_quantity",
+  "completed_quantity"
  ],
  "fields": [
   {
@@ -24,11 +25,16 @@
    "fieldname": "target_quantity",
    "fieldtype": "Int",
    "label": "Targeted Quantity"
+  },
+  {
+   "fieldname": "completed_quantity",
+   "fieldtype": "Int",
+   "label": "Completed quantity"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-10 17:27:08.744810",
+ "modified": "2024-12-12 13:20:42.483415",
  "modified_by": "Administrator",
  "module": "Bluarmor Lite",
  "name": "Trace Sale",
