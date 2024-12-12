@@ -7,6 +7,10 @@ const routes = [
     path: '/',
     name: 'Dashboard',
     component: () => import('@/pages/Dashboard.vue'),
+  },{
+    path: '/new-target',
+    name: 'CreateTarget',
+    component:()=> import('@/pages/Target.vue')
   }
 ]
 

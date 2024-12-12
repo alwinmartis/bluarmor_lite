@@ -15,7 +15,7 @@
       </div>
       {{ target.name }}<span> </span>{{ target.target_quantity }} <span>  </span> {{ target.completed_quantity }}
       <div>
-        <Button @click="console.log('Clicked')">Edit</Button>
+        <Button class = 'edit' @click="console.log('Clicked')" route="/new-target">Edit</Button>
       </div>
       <br />
     </div>
@@ -41,7 +41,7 @@ salestarget.fetch()
 <style scoped>
 .head{
   padding:10px 2px;
-  font-size:20px;
+  font-size:25px;
   font-weight: 500;
   margin-left: 10px;
 }
@@ -58,4 +58,16 @@ salestarget.fetch()
 .circle{
   margin-left: 10px;
 }
+
+.edit{
+  background-color: orange;
+  color:aliceblue;
+  width:60px;
+}
+
+.edit:hover{
+  background-color: chartreuse;
+  color: white;
+}
+
 </style>
