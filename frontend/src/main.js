@@ -1,3 +1,4 @@
+// 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
 import './index.css'
 
 import { createApp } from 'vue'
