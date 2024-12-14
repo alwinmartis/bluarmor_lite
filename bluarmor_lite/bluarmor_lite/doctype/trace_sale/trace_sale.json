@@ -7,8 +7,10 @@
  "field_order": [
   "from_date",
   "to_date",
+  "item",
   "target_quantity",
-  "completed_quantity"
+  "completed_quantity",
+  "pending_quantity"
  ],
  "fields": [
   {
@@ -29,12 +31,25 @@
   {
    "fieldname": "completed_quantity",
    "fieldtype": "Int",
-   "label": "Completed quantity"
+   "label": "Completed quantity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "pending_quantity",
+   "fieldtype": "Int",
+   "label": "Pending Quantity",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-12 16:38:36.337056",
+ "modified": "2024-12-14 14:20:31.420949",
  "modified_by": "Administrator",
  "module": "Bluarmor Lite",
  "name": "Trace Sale",
