@@ -13,7 +13,7 @@
           :showPercentage="true"
         ></CircularProgressBar>
       </div>
-      {{ target.name }}<span> </span>{{ target.target_quantity }} <span>  </span> {{ target.completed_quantity }}
+      {{ target.name }}<span>  </span> {{target.item}} <span>  </span>{{ target.target_quantity }} <span>  </span> {{ target.completed_quantity }}<span></span>{{ target.pending_quantity }}
       <div>
         <Button class = 'edit' @click="console.log('Clicked')" route="/new-target">Edit</Button>
       </div>
@@ -29,7 +29,7 @@ import { sessionUser } from '../data/session'
 
 let salestarget = createListResource({
   doctype: 'Trace Sale',
-  fields: ['name', 'target_quantity', 'from_date', 'to_date', 'completed_quantity'],
+  fields: ['name', 'target_quantity', 'from_date', 'to_date', 'completed_quantity', 'item', 'pending_quantity'],
   orderBy: 'creation Desc',
   onSuccess(s) {
     console.log(s)
