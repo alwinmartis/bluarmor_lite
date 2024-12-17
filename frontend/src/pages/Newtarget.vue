@@ -17,7 +17,8 @@
     <div class="body-data">
         <div class="body-data-in">
             <p class="name">Item name</p>
-            <FormControl v-model="targetDetails.item" placeholder="Item" type="taxt" lable="item"></FormControl>
+            <!-- <FormControl v-model="targetDetails.item" placeholder="Item" type="taxt" lable="item"></FormControl> -->
+             <Autocomplete v-model="targetDetails.item" :options="itemsautocompleteoptions" :multiple="true"></Autocomplete>
         </div>
         <div class="body-data-in">
             <p class="name">Target Quantity</p>
@@ -35,7 +36,7 @@
 
 <script setup>
 import { FormControl, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
-import {reactive, ref, computed, inject} from "vue";
+import {reactive, ref, computed, inject, watch} from "vue";
 
 let items = createListResource({
     doctype:'Item',
@@ -43,6 +44,14 @@ let items = createListResource({
     onSuccess(s){
         console.log(s)
     }
+})
+
+const itemsautocompleteoptions = computed(()=>{
+    const options = items.value.map((f)=>{
+        lable: f.item_name;
+        value:f.item_code
+    })
+    return options
 })
 
 const targetDetails = reactive({
