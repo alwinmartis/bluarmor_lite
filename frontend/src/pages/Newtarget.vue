@@ -47,12 +47,14 @@ let items = createListResource({
         console.log(s)
     }
 })
+//feature added
 
+let fetch_items = items.fetch()
 const itemsautocompleteoptions = computed(()=>{
-    const options = items.value.map((f)=>({
-        lable: f.item_name,
+    const options = items.value.map((f)=>{
+        lable: f.item_name;
         value:f.item_code
-    }))
+    })
     return options
 })
 
