@@ -43,9 +43,6 @@ const router = useRouter();
 let items = createListResource({
     doctype:'Item',
     fields:['item_code','item_name'],
-    onSuccess(s){
-        console.log("success")
-    },
     auto:true
 })
 //feature added
@@ -53,14 +50,12 @@ let items = createListResource({
 // let fetch_items = items.fetch()
 console.log("in")
 const itemsautocompleteoptions = computed(()=>{
-    const options = items.data.map((f)=>({
+    const options = items.value.map((f)=>({
         lable: f.item_name,
         value:f.item_code
     }))
     return options
 })
-
-console.log(itemsautocompleteoptions)
 
 const targetDetails = reactive({
     fdate: null,
