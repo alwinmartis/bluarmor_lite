@@ -44,11 +44,7 @@ let items = createListResource({
     doctype:'Item',
     fields:['item_code','item_name'],
     onSuccess(s){
-<<<<<<< HEAD
         console.log(s)
-=======
-        cosnole.log(s)
->>>>>>> a1310c2e440ba756bfddf655d2a2fb0464c96dde
     },
     auto:true
 })
