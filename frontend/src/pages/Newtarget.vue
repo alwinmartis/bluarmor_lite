@@ -41,6 +41,7 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 import {reactive, ref, computed, inject, watch} from "vue";
 
+// data collection 
 let items = createListResource({
     doctype:'Item',
     fields:[item_code,item_name],
