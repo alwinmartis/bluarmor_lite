@@ -36,12 +36,10 @@
 
 <script setup>
 import { FormControl, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
-import {reactive, ref, computed, inject} from "vue";
+import {reactive, ref, computed, inject, watch} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
-import {reactive, ref, computed, inject, watch} from "vue";
 
-// data collection 
 let items = createListResource({
     doctype:'Item',
     fields:[item_code,item_name],
@@ -49,7 +47,7 @@ let items = createListResource({
         console.log(s)
     }
 })
-// fetching item data
+
 const itemsautocompleteoptions = computed(()=>{
     const options = items.value.map((f)=>{
         lable: f.item_name;
