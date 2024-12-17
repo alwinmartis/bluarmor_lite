@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="head">Welcome to Bluarmor App !</div>
-    <Button>Insert</Button>
+    <Button class="edit">Insert</Button>
   </div>
   
   <div>
@@ -76,7 +76,8 @@ salestarget.fetch()
 
 .header{
   display:flex;
-  justify-content:space-between
+  justify-content:space-between;
+  align-items: center;
 }
 
 </style>
