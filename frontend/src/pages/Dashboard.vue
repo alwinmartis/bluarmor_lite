@@ -1,5 +1,9 @@
 <template>
-  <div class="head">Welcome to Bluarmor App !</div>
+  <div class="header">
+    <div class="head">Welcome to Bluarmor App !</div>
+    <Button>Insert</Button>
+  </div>
+  
   <div>
     <div
       class="flex items-center justify-between content"
@@ -68,6 +72,11 @@ salestarget.fetch()
 .edit:hover{
   background-color: chartreuse;
   color: white;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between
 }
 
 </style>
