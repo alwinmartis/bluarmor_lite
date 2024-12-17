@@ -44,23 +44,23 @@ let items = createListResource({
     doctype:'Item',
     fields:['item_code','item_name'],
     onSuccess(s){
-        console.log(s)
+        console.log("success")
     },
     auto:true
 })
 //feature added
 
 // let fetch_items = items.fetch()
-console.log(items)
 console.log("in")
 const itemsautocompleteoptions = computed(()=>{
-    console.log(items)
     const options = items.data.map((f)=>({
         lable: f.item_name,
         value:f.item_code
     }))
     return options
 })
+
+console.log(itemsautocompleteoptions)
 
 const targetDetails = reactive({
     fdate: null,
