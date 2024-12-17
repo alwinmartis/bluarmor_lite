@@ -48,14 +48,14 @@ let items = createListResource({
 //feature added
 
 // let fetch_items = items.fetch()
-console.log("in")
-const itemsautocompleteoptions = computed(()=>{
-    const options = items.value.map((f)=>({
-        lable: f.item_name,
-        value:f.item_code
-    }))
-    return options
-})
+console.log(items)
+// const itemsautocompleteoptions = computed(()=>{
+//     const options = items.value.map((f)=>({
+//         lable: f.item_name,
+//         value:f.item_code
+//     }))
+//     return options
+// })
 
 const targetDetails = reactive({
     fdate: null,
