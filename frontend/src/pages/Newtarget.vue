@@ -37,6 +37,14 @@
 import { FormControl, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
 import {reactive, ref, computed, inject} from "vue";
 
+let items = createListResource({
+    doctype:'Item',
+    fields:[item_code,item_name],
+    onSuccess(s){
+        console.log(s)
+    }
+})
+
 const targetDetails = reactive({
     fdate: null,
     tdate: null,
