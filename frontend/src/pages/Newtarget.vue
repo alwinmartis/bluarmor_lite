@@ -44,18 +44,22 @@ let items = createListResource({
     doctype:'Item',
     fields:['item_code','item_name'],
     onSuccess(s){
+<<<<<<< HEAD
         console.log(s)
+=======
+        cosnole.log(s)
+>>>>>>> a1310c2e440ba756bfddf655d2a2fb0464c96dde
     },
     auto:true
 })
 //feature added
 
-let fetch_items = items.fetch()
-console.log(fetch_items)
+// let fetch_items = items.fetch()
+console.log(items)
 console.log("in")
 const itemsautocompleteoptions = computed(()=>{
-    console.log(item)
-    const options = items.target.map((f)=>({
+    console.log(items)
+    const options = items.data.map((f)=>({
         lable: f.item_name,
         value:f.item_code
     }))
