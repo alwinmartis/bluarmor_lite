@@ -47,6 +47,7 @@ let items = createListResource({
         console.log(s)
     }
 })
+//feature added
 
 let fetch_items = items.fetch()
 const itemsautocompleteoptions = computed(()=>{
