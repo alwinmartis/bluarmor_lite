@@ -36,6 +36,8 @@
 <script setup>
 import { FormControl, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
 import {reactive, ref, computed, inject} from "vue";
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const targetDetails = reactive({
     fdate: null,
@@ -46,7 +48,6 @@ const targetDetails = reactive({
 
 const salesListResource = createListResource({
     doctype:"Trace Sale",
-
 })
 
 
@@ -58,8 +59,12 @@ to_date:targetDetails.tdate,
 item:targetDetails.item,
 target_quantity:targetDetails.tqty
 })
+,{
+    onSuccess(){
+        router.replace({name:"Dashboard"})
+    }
 }
-
+}
 </script>
 
 
