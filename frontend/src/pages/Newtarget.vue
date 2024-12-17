@@ -42,17 +42,18 @@ const router = useRouter();
 
 let items = createListResource({
     doctype:'Item',
-    fields:[item_code,item_name],
+    fields:['item_code','item_name'],
     onSuccess(s){
         console.log(s)
     }
 })
 
+let fetch_items = items.fetch()
 const itemsautocompleteoptions = computed(()=>{
-    const options = items.value.map((f)=>{
-        lable: f.item_name;
-        value:f.item_code
-    })
+    const options = fetch_items.value.map((f)=>({
+        lable: f.item_name,
+        value: f.item_code
+    }))
     return options
 })
 
