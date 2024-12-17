@@ -44,8 +44,9 @@ let items = createListResource({
     doctype:'Item',
     fields:['item_code','item_name'],
     onSuccess(s){
-        return s
-    }
+        console.log(s)
+    },
+    auto:true
 })
 //feature added
 
