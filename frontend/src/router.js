@@ -12,6 +12,11 @@ const routes = [
     name: 'CreateTarget',
     component:()=> import('@/pages/Target.vue')
   }
+  ,{
+    path: '/add-target',
+    name: 'NewTarget',
+    component:()=> import('@/pages/Newtarget.vue')
+  }
 ]
 
 let router = createRouter({

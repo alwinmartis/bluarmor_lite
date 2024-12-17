@@ -1,12 +1,12 @@
 <template>
     <div class="head">
-        <p>New Target</p>
+        <p>stay tuned! building........</p>
         <Button>Save</Button>  
     </div>
-    <div>
+    <!-- <div>
         <FormControl placeholeder="From Date" type="Date"></FormControl>
         <FormControl placeholeder="To Date" type="Date"></FormControl>
-    </div>
+    </div> -->
 </template>
 <script setup>
 import {Button, FormControl} from "frappe-ui"

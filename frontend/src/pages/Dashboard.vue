@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="head">Welcome to Bluarmor App !</div>
-    <Button class="edit">Insert</Button>
+    <Button class="edit" route="/add-target">Insert</Button>
   </div>
   
   <div>
