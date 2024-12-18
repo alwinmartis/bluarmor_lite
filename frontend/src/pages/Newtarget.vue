@@ -110,11 +110,11 @@ const fetchItems = ()=>{
         doctype:'Item',
         fields:['item_code','item_name']
     })
-    const data = itemResource.fetch()
+    const data = itemResource.data
     console.log(data)
     console.log("data collected")
     if (data && Array.isArray(data)){
-        Items.value = data.map((item)=>({
+        Items.value = data.value.map((item)=>({
             label:item.item_name,
             value:item.item_code
         }))}
