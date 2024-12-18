@@ -113,10 +113,10 @@ const fetchItems = ()=>{
         auto:true,
         orderBy:'creation Desc'
     })
-    const data = itemResource
+    const data = itemResource.data
     console.log(data)
     console.log("data collected")
-    if (data && Array.isArray(data)){
+    if (data){
         Items.value = data.map((item)=>({
             label:item.item_name,
             value:item.item_code
