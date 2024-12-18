@@ -34,12 +34,12 @@
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
               v-model="targetDetails.item"></ListView> -->
-              <select v-model="selectedItem">
-                <option v-for="item in mappedItems" :key="item.value" :value="item.value">
+            <select v-model="selectedItem">
+                <option v-for="item in Items" :key="item.value" :value="item.value">
                     {{ item.label }}
                 </option>
-              </select>
-              <p>{{ selectedItem }}</p>
+            </select>
+              <p>{{ selectedItem || 'None'}}</p>
         </div>
 
         <div class="body-data-in">
@@ -61,7 +61,6 @@ import { FormControl,ListView, Button, Dropdown, Autocomplete, createListResourc
 import {reactive, ref, computed, inject, watch, onMounted} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
-
 // const selectedItem = ref('');
 // const items = ref([])
 // const fetchItems = async()=>{
@@ -101,42 +100,39 @@ const router = useRouter();
 // })
 //     return options
 // })
+// data
 
-const rawItem = ref([]);
-const mappedItems = ref([]);
+const Items = ref([]);
+// const mappedItems = ref([]);
 const selectedItem = ref('');
 
-const fetchAndMapItems = async() =>{
-    try{
-        const itemResource =await createListResource({
+const fetchItems = ()=>{
+    const itemResource = createListResource({
         doctype:'Item',
-        filters:{},
         fields:['item_code','item_name']
-        });
-        if (itemResource && Array.isArray(itemResource)){
-            rawItem.value = itemResource;
-
-            mappedItems.value = rawItem.value.map((item)=>({
-            label:item.item_code,
-            value:item.item_name
-        }))
-        }
-        else{
-            console.lof("error in fetching")
-        }
-    } catch(error){
-        console.error("error in fetching item", error)
-    } 
+    })
+    const data = itemResource.data
+    console.log(data)
+    console.log("data collected")
+    if (data && Array.isArray(data)){
+        Items.value = data.map((item)=>({
+            label:item.item_name,
+            value:item.item_code
+        }))}
+    else{
+        console.log("error in fetching")
+        item.value = []
+    }
 }
 
 onMounted(()=>{
-    fetchAndMapItems();
+    fetchItems();
+    console.log("Items fetching successful")
 })
 
 const targetDetails = reactive({
     fdate: null,
     tdate: null,
-
     tqty: 0.0,
 })
 
