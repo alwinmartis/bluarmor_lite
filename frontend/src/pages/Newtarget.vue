@@ -113,11 +113,11 @@ const fetchItems = ()=>{
         auto:true,
         orderBy:'creation Desc'
     })
-    const data = itemResource.data
-    console.log(data)
+    const datas = itemResource
+    console.log(datas)
     console.log("data collected")
-    if (data){
-        Items.value = data.map((item)=>({
+    if (datas){
+        Items.value = datas.data.map((item)=>({
             label:item.item_name,
             value:item.item_code
         }))}
