@@ -35,7 +35,7 @@
               :rowKey="item_code"
               v-model="targetDetails.item"></ListView> -->
             <select v-model="selectedItem">
-                <option v-for="item in mappedItems" :key="item.value" :value="item.value">
+                <option v-for="item in Items" :key="item.value" :value="item.value">
                     {{ item.label }}
                 </option>
             </select>
@@ -61,7 +61,6 @@ import { FormControl,ListView, Button, Dropdown, Autocomplete, createListResourc
 import {reactive, ref, computed, inject, watch, onMounted} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
-
 // const selectedItem = ref('');
 // const items = ref([])
 // const fetchItems = async()=>{
@@ -102,36 +101,29 @@ const router = useRouter();
 //     return options
 // })
 
-const rawItems = ref([]);
-const mappedItems = ref([]);
+const Items = ref([]);
+// const mappedItems = ref([]);
 const selectedItem = ref('');
 
-const fetchAndMapItems = async() =>{
-    try{
-        const response =await frappe.call({
-        method:'frappe.cleint.get_list',
-        args:{
-            doctype:'Item',
-            fields:['item_code','item_name']
-            },
-        });
-        if (response && response.message && Array.isArray(response.message)){
-            rawItems.value = response.message;
-            mappedItems.value = rawItems.value.map((item)=>({
+const fetchItems = ()=>{
+    const itemResource = createListResource({
+        doctype:'Item',
+        fields:['item_code','item_name']
+    })
+    const data = itemResource.get()
+    if (data && Array.isArray(data)){
+        Items.value = data.map((item)=>({
             label:item.item_name,
-            value:item.item_code,
-        }))
-        }
-        else{
-            console.log("error in fetching")
-        }
-    } catch(error){
-        console.error("error in fetching item", error)
-    } 
+            value:item.item_code
+        }))}
+    else{
+        console.log("error in fetching")
+        item.value = []
+    }
 }
 
 onMounted(()=>{
-    fetchAndMapItems();
+    fetchItems();
     console.log("Items fetching successful")
 })
 
