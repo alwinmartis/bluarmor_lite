@@ -34,12 +34,12 @@
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
               v-model="targetDetails.item"></ListView> -->
-              <select v-model="selectedItem">
+            <select v-model="selectedItem">
                 <option v-for="item in mappedItems" :key="item.value" :value="item.value">
                     {{ item.label }}
                 </option>
-              </select>
-              <p>{{ selectedItem }}</p>
+            </select>
+              <p>{{ selectedItem || 'None'}}</p>
         </div>
 
         <div class="body-data-in">
@@ -102,7 +102,7 @@ const router = useRouter();
 //     return options
 // })
 
-const rawItem = ref([]);
+const rawItems = ref([]);
 const mappedItems = ref([]);
 const selectedItem = ref('');
 
@@ -114,15 +114,15 @@ const fetchAndMapItems = async() =>{
         fields:['item_code','item_name']
         });
         if (itemResource && Array.isArray(itemResource)){
-            rawItem.value = itemResource;
+            rawItems.value = itemResource;
 
-            mappedItems.value = rawItem.value.map((item)=>({
-            label:item.item_code,
-            value:item.item_name
+            mappedItems.value = rawItems.value.map((item)=>({
+            label:item.item_name,
+            value:item.item_code,
         }))
         }
         else{
-            console.lof("error in fetching")
+            console.log("error in fetching")
         }
     } catch(error){
         console.error("error in fetching item", error)
@@ -131,12 +131,12 @@ const fetchAndMapItems = async() =>{
 
 onMounted(()=>{
     fetchAndMapItems();
+    console.log("Items fetching successful")
 })
 
 const targetDetails = reactive({
     fdate: null,
     tdate: null,
-
     tqty: 0.0,
 })
 
