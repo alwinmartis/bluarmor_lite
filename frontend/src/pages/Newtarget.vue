@@ -19,7 +19,7 @@
         <div class="body-data-in">
             <p class="name">Item name</p>
 
-              <ListView :columns="[
+              <!-- ``<ListView :columns="[
                 {label: 'ItemCode',
                     key:'item_code'
                 }
@@ -33,7 +33,8 @@
               }"
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
-              v-model="targetDetails.item"></ListView>
+              v-model="targetDetails.item"></ListView> -->
+              <select :options="options" v-model="targetDetails.item" ></select>
         </div>
 
         <div class="body-data-in">
@@ -65,11 +66,13 @@ let items = createListResource({
 
 // let fetch_items = items.fetch()
 // console.log(items)
+const value = ref('')
 const itemsautocompleteoptions = computed(()=>{
     const options = items.data.map((f)=>{
         return {
             ...items,
-            item_code:f.item_code
+            label:f.item_name,
+            value:f.item_code
         }
 })
     return options
