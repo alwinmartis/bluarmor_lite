@@ -117,7 +117,10 @@ const fetchItems = ()=>{
     console.log(datas)
     console.log("data collected")
     if (datas){
-        Items.value = datas.data.map((item)=>({
+        console.log(datas.data)
+        console.log(datas.list)
+        console.log(datas.list.data)
+        Items.value = datas.list.data.map((item)=>({
             label:item.item_name,
             value:item.item_code
         }))}
