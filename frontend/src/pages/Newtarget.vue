@@ -121,6 +121,9 @@ const fetchAndMapItems = async() =>{
             value:item.item_name
         }))
         }
+        else{
+            console.lof("error in fetching")
+        }
     } catch(error){
         console.error("error in fetching item", error)
     } 
@@ -133,7 +136,7 @@ onMounted(()=>{
 const targetDetails = reactive({
     fdate: null,
     tdate: null,
-    item: '',
+
     tqty: 0.0,
 })
 
@@ -147,7 +150,7 @@ function savetarget(){
         ...targetDetails,
     from_date:targetDetails.fdate,
 to_date:targetDetails.tdate,
-item:targetDetails.item,
+item:selectedItem,
 target_quantity:targetDetails.tqty
 })
 ,{
