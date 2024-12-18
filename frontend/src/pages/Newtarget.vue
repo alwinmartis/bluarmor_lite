@@ -120,7 +120,7 @@ const fetchItems = ()=>{
         console.log(datas.data)
         console.log(datas.list)
         console.log(datas.list.data)
-        Items.value = datas.list.data.map((item)=>({
+        Items.value = datas.list.map((item)=>({
             label:item.item_name,
             value:item.item_code
         }))}
