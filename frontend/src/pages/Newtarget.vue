@@ -110,12 +110,12 @@ const fetchAndMapItems = async() =>{
     try{
         const itemResource =await createListResource({
         doctype:'Item',
-        filters:{},
         fields:['item_code','item_name']
         });
         if (itemResource && Array.isArray(itemResource)){
             rawItems.value = itemResource;
-
+            console.log("next")
+            console.log(rawItems.value)
             mappedItems.value = rawItems.value.map((item)=>({
             label:item.item_name,
             value:item.item_code,
