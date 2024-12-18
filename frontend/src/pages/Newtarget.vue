@@ -11,15 +11,31 @@
         </div>
         <div class="body-data-in">
             <p class="name">To Date</p>
-            <FormControl v-model="targetDetails.tdate" placeholder="To Date" type="date" lable="tdate"></FormControl>
+         <FormControl v-model="targetDetails.tdate" placeholder="To Date" type="date" lable="tdate"></FormControl>
+
         </div> 
     </div>
     <div class="body-data">
         <div class="body-data-in">
             <p class="name">Item name</p>
-            <!-- <FormControl v-model="targetDetails.item" placeholder="Item" type="taxt" lable="item"></FormControl> -->
-             <Autocomplete v-model="targetDetails.item" :options="itemsautocompleteoptions" :multiple="true"></Autocomplete>
+
+              <ListView :columns="[
+                {label: 'ItemCode',
+                    key:'item_code'
+                }
+              ]"
+              :options="{
+                selecttable: false,
+                showTooltip: false,
+                emptyState:{
+                    title:'No Item yet'
+                },
+              }"
+              :rows="itemsautocompleteoptions"
+              :rowKey="item_code"
+              v-model="targetDetails.item"></ListView>
         </div>
+
         <div class="body-data-in">
             <p class="name">Target Quantity</p>
             <FormControl v-model="targetDetails.tqty" placeholder="Quantity" type="text" lable="tqty"></FormControl>
@@ -35,7 +51,7 @@
 
 
 <script setup>
-import { FormControl, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
+import { FormControl,ListView, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
 import {reactive, ref, computed, inject, watch} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
@@ -50,10 +66,12 @@ let items = createListResource({
 // let fetch_items = items.fetch()
 // console.log(items)
 const itemsautocompleteoptions = computed(()=>{
-    const options = items.data.map((f)=>({
-        lable: f.item_name,
-        value:f.item_code
-    }))
+    const options = items.data.map((f)=>{
+        return {
+            ...items,
+            item_code:f.item_code
+        }
+})
     return options
 })
 
