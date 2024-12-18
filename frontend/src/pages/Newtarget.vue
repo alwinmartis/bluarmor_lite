@@ -34,7 +34,7 @@
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
               v-model="targetDetails.item"></ListView> -->
-              <select :options="options" v-model="targetDetails.item" ></select>
+              <select :options="itemsautocompleteoptions" v-model="targetDetails.item" ></select>
         </div>
 
         <div class="body-data-in">
