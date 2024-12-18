@@ -1,0 +1,1 @@
+import{e as a,a as t,g as s,h as o,w as r,i as n,o as _,j as d,k as l}from"./index-Bhc9jsjs.js";const u={class:"head"},c={__name:"Target",setup(i){return(p,e)=>(_(),t("div",u,[e[1]||(e[1]=s("p",null,"stay tuned! building........",-1)),o(n(l),null,{default:r(()=>e[0]||(e[0]=[d("Save")])),_:1})]))}},m=a(c,[["__scopeId","data-v-34091f1a"]]);export{m as default};

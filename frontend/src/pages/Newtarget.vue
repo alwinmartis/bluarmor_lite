@@ -17,29 +17,36 @@
     </div>
     <div class="body-data">
         <div class="body-data-in">
-            <p class="name">Item name</p>
-
-              ``<ListView :columns="[
-                {label: 'ItemCode',
-                    key:'item_code'
-                }
-              ]"
-              :options="{
-                selecttable: false,
-                showTooltip: false,
-                emptyState:{
-                    title:'No Item yet'
-                },
-              }"
-              :rows="itemsautocompleteoptions"
-              :rowKey="item_code"
-              v-model="targetDetails.item"></ListView>
+            <!-- <p class="name">Item name</p> -->
+            <Card title="items">
+                <ListView :columns="[
+                    {label: 'ItemCode',
+                        key:'item_code',
+                        width:4,
+                    },{
+                        lable:'ItemName',
+                        key:'item_name'
+                    }
+                ]"
+                :options="{
+                    selecttable: false,
+                    showTooltip: false,
+                    resizeColumn:false,
+                    emptyState:{
+                        title:'No Item yet'
+                    },
+                }"
+                :rows="itemsautocompleteoptions"
+                :rowKey="item_code"
+                :v-model="targetDetails.item">
+            </ListView>
+    </Card>
             <!-- <select v-model="selectedItem">
                 <option v-for="item in Items" :key="item.value" :value="item.value">
                     {{ item.label }}
                 </option>
             </select> -->
-              <p>{{ selectedItem || 'None'}}</p>
+              <!-- <p>{{ selectedItem || 'None'}}</p> -->
         </div>
 
         <div class="body-data-in">
@@ -88,21 +95,20 @@ const router = useRouter();
 const items = createListResource({
         doctype:'Item',
         fields:['item_code','item_name'],
-        auto:true
+        filters:{},
+        auto:true,
         });
 
-let fetch_items = items.fetch()
-console.log(items)
-const value = ref('')
 const itemsautocompleteoptions = computed(()=>{
-    const options = items.data.map((f)=>{
-        return {
-            ...items,
-            label:f.item_name,
-            value:f.item_code
-        }
-})
-    return options
+    if (items.list.data){
+        return items.list.data.map((item)=>{
+            return {
+                ...items,
+                item_code:item.item_code
+            }
+        })
+    }
+    return []
 })
 
 
@@ -155,7 +161,7 @@ function savetarget(){
         ...targetDetails,
     from_date:targetDetails.fdate,
 to_date:targetDetails.tdate,
-item:selectedItem,
+item:targetDetails.item,
 target_quantity:targetDetails.tqty
 })
 ,{
