@@ -108,14 +108,15 @@ const selectedItem = ref('');
 
 const fetchAndMapItems = async() =>{
     try{
-        const itemResource =await createListResource({
-        doctype:'Item',
-        fields:['item_code','item_name']
+        const response =await frappe.call({
+        method:'frappe.cleint.get_list',
+        args:{
+            doctype:'Item',
+            fields:['item_code','item_name']
+            },
         });
-        if (itemResource && Array.isArray(itemResource)){
-            rawItems.value = itemResource;
-            console.log("next")
-            console.log(rawItems.value)
+        if (response && response.message && Array.isArray(response.message)){
+            rawItems.value = response.message;
             mappedItems.value = rawItems.value.map((item)=>({
             label:item.item_name,
             value:item.item_code,
