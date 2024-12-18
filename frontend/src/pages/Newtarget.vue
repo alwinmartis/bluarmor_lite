@@ -34,7 +34,12 @@
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
               v-model="targetDetails.item"></ListView> -->
-              <select :options="itemsautocompleteoptions" v-model="targetDetails.item" ></select>
+              <select v-model="selectedItem">
+                <option v-for="item in mappedItems" :key="item.value" :value="item.value">
+                    {{ item.label }}
+                </option>
+              </select>
+              <p>{{ selectedItem }}</p>
         </div>
 
         <div class="body-data-in">
@@ -53,29 +58,76 @@
 
 <script setup>
 import { FormControl,ListView, Button, Dropdown, Autocomplete, createListResource, createResource, ErrorMessage } from 'frappe-ui';
-import {reactive, ref, computed, inject, watch} from "vue";
+import {reactive, ref, computed, inject, watch, onMounted} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
-let items = createListResource({
-    doctype:'Item',
-    fields:['item_code','item_name'],
-    auto:true
-})
+// const selectedItem = ref('');
+// const items = ref([])
+// const fetchItems = async()=>{
+//     try{
+//         const itemresource = createListResource({
+//         doctype:'Item',
+//         fields:['item_code','item_name'],
+//         auto:true
+//         });
+
+//         itemresource.subscribe((data)=>{
+//             items.value = data;
+//         })
+//     } catch(error){
+//         console.error("Error in fetching items")
+//     }
+//     return {
+//         items,
+//         selectedItem
+//     }
+// }
+// fetchItems();
+
+
 //feature added
 
 // let fetch_items = items.fetch()
 // console.log(items)
-const value = ref('')
-const itemsautocompleteoptions = computed(()=>{
-    const options = items.data.map((f)=>{
-        return {
-            ...items,
-            label:f.item_name,
-            value:f.item_code
+// const value = ref('')
+// const itemsautocompleteoptions = computed(()=>{
+//     const options = items.data.map((f)=>{
+//         return {
+//             ...items,
+//             label:f.item_name,
+//             value:f.item_code
+//         }
+// })
+//     return options
+// })
+
+const rawItem = ref([]);
+const mappedItems = ref([]);
+const selectedItem = ref('');
+
+const fetchAndMapItems = async() =>{
+    try{
+        const itemResource =await createListResource({
+        doctype:'Item',
+        filters:{},
+        fields:['item_code','item_name']
+        });
+        if (itemResource && Array.isArray(itemResource)){
+            rawItem.value = itemResource;
+
+            mappedItems.value = rawItem.value.map((item)=>({
+            label:item.item_code,
+            value:item.item_name
+        }))
         }
-})
-    return options
+    } catch(error){
+        console.error("error in fetching item", error)
+    } 
+}
+
+onMounted(()=>{
+    fetchAndMapItems();
 })
 
 const targetDetails = reactive({
