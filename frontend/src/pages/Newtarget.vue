@@ -19,7 +19,7 @@
         <div class="body-data-in">
             <p class="name">Item name</p>
 
-              <!-- ``<ListView :columns="[
+              ``<ListView :columns="[
                 {label: 'ItemCode',
                     key:'item_code'
                 }
@@ -33,12 +33,12 @@
               }"
               :rows="itemsautocompleteoptions"
               :rowKey="item_code"
-              v-model="targetDetails.item"></ListView> -->
-            <select v-model="selectedItem">
+              v-model="targetDetails.item"></ListView>
+            <!-- <select v-model="selectedItem">
                 <option v-for="item in Items" :key="item.value" :value="item.value">
                     {{ item.label }}
                 </option>
-            </select>
+            </select> -->
               <p>{{ selectedItem || 'None'}}</p>
         </div>
 
@@ -85,55 +85,59 @@ const router = useRouter();
 // fetchItems();
 
 
-//feature added
-
-// let fetch_items = items.fetch()
-// console.log(items)
-// const value = ref('')
-// const itemsautocompleteoptions = computed(()=>{
-//     const options = items.data.map((f)=>{
-//         return {
-//             ...items,
-//             label:f.item_name,
-//             value:f.item_code
-//         }
-// })
-//     return options
-// })
-// data
-
-const Items = ref([]);
-// const mappedItems = ref([]);
-const selectedItem = ref('');
-
-const fetchItems = ()=>{
-    const itemResource = createListResource({
+const items = createListResource({
         doctype:'Item',
         fields:['item_code','item_name'],
-        auto:true,
-        orderBy:'creation Desc'
-    })
-    const datas = itemResource
-    console.log(datas)
-    console.log("data collected")
-    if (datas){
-        console.log(datas.data)
-        console.log(datas.list)
-        console.log(datas.list.data)
-        Items.value = datas.list.map((item)=>({
-            label:item.item_name,
-            value:item.item_code
-        }))}
-    else{
-        console.log("error in fetching")
-        item.value = []
-    }
-}
+        auto:true
+        });
 
-onMounted(()=>{
-    fetchItems();
-    console.log("Items fetching successful")
+let fetch_items = items.fetch()
+console.log(items)
+const value = ref('')
+const itemsautocompleteoptions = computed(()=>{
+    const options = items.data.map((f)=>{
+        return {
+            ...items,
+            label:f.item_name,
+            value:f.item_code
+        }
 })
+    return options
+})
+
+
+// const Items = ref([]);
+// // const mappedItems = ref([]);
+// const selectedItem = ref('');
+
+// const fetchItems = ()=>{
+//     const itemResource = createListResource({
+//         doctype:'Item',
+//         fields:['item_code','item_name'],
+//         auto:true,
+//         orderBy:'creation Desc'
+//     })
+//     const datas = itemResource
+//     console.log(datas)
+//     console.log("data collected")
+//     if (datas){
+//         console.log(datas.data)
+//         console.log(datas.list)
+//         console.log(datas.list.data)
+//         Items.value = datas.list.map(item)({
+//             label:item.item_name,
+//             value:item.item_code
+//         })}
+//     else{
+//         console.log("error in fetching")
+//         item.value = []
+//     }
+// }
+
+// onMounted(()=>{
+//     fetchItems();
+//     console.log("Items fetching successful")
+// })
 
 const targetDetails = reactive({
     fdate: null,
