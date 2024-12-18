@@ -111,7 +111,7 @@ const fetchItems = ()=>{
         doctype:'Item',
         fields:['item_code','item_name']
     })
-    const data = itemResource.data
+    const data = itemResource
     console.log(data)
     console.log("data collected")
     if (data && Array.isArray(data)){
