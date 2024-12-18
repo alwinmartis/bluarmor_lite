@@ -109,7 +109,9 @@ const selectedItem = ref('');
 const fetchItems = ()=>{
     const itemResource = createListResource({
         doctype:'Item',
-        fields:['item_code','item_name']
+        fields:['item_code','item_name'],
+        auto:true,
+        orderBy:'creation Desc'
     })
     const data = itemResource
     console.log(data)
