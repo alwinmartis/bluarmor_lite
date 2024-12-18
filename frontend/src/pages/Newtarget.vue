@@ -18,7 +18,7 @@
     <div class="body-data">
         <div class="body-data-in">
             <!-- <p class="name">Item name</p> -->
-            <Card title="items">
+            <!-- <Card title="items">
                 <ListView :columns="[
                     {label: 'ItemCode',
                         key:'item_code',
@@ -39,13 +39,13 @@
                 :rows="itemsautocompleteoptions"
                 :rowKey="item_code"
                 :v-model="targetDetails.item">
-            </ListView>
-    </Card>
-            <!-- <select v-model="selectedItem">
-                <option v-for="item in Items" :key="item.value" :value="item.value">
-                    {{ item.label }}
+            </ListView> -->
+    <!-- </Card> -->
+            <select v-model="targetDetails.item">
+                <option v-for="item in itemsautocompleteoptions" :key="item.item_code" :value="item.item_code">
+                    {{ item.item_code }}
                 </option>
-            </select> -->
+            </select>
               <!-- <p>{{ selectedItem || 'None'}}</p> -->
         </div>
 
