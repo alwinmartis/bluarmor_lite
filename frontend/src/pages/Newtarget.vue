@@ -75,8 +75,10 @@ const items = createListResource({
         filters:[
             ["item_code","Like","FG-%"],
         ],
-        auto:true
+        auto:true,
+        limit:100
         });
+console.log(items.list)
 
 const itemsautocompleteoptions = computed(()=>{
     if (items.list.data){
