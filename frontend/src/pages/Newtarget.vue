@@ -77,7 +77,7 @@ const items = createListResource({
         ],
         auto:true,
         orderby: 'creation desc',
-        limit: alse
+        limit: false
         });
 console.log(items.list)
 
