@@ -17,7 +17,7 @@
     </div>
     <div class="body-data">
         <div class="body-data-in">
-            <!-- <p class="name">Item name</p> -->
+           <p class="name">Item name</p>
             <!-- <Card title="items">
                 <ListView :columns="[
                     {label: 'ItemCode',
@@ -46,7 +46,6 @@
                     {{ item.item_code }}
                 </option>
             </select>
-              <!-- <p>{{ selectedItem || 'None'}}</p> -->
         </div>
 
         <div class="body-data-in">
@@ -68,28 +67,6 @@ import { FormControl,ListView, Button, Dropdown, Autocomplete, createListResourc
 import {reactive, ref, computed, inject, watch, onMounted} from "vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
-// const selectedItem = ref('');
-// const items = ref([])
-// const fetchItems = async()=>{
-//     try{
-//         const itemresource = createListResource({
-//         doctype:'Item',
-//         fields:['item_code','item_name'],
-//         auto:true
-//         });
-
-//         itemresource.subscribe((data)=>{
-//             items.value = data;
-//         })
-//     } catch(error){
-//         console.error("Error in fetching items")
-//     }
-//     return {
-//         items,
-//         selectedItem
-//     }
-// }
-// fetchItems();
 
 
 const items = createListResource({
@@ -139,7 +116,6 @@ const itemsautocompleteoptions = computed(()=>{
 //         item.value = []
 //     }
 // }
-
 // onMounted(()=>{
 //     fetchItems();
 //     console.log("Items fetching successful")

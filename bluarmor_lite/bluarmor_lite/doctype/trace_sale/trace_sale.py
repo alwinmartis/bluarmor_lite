@@ -12,14 +12,14 @@ class TraceSale(Document):
 	from typing import TYPE_CHECKING
 
 	if TYPE_CHECKING:
-		from frappe.types import DF # type: ignore
+		from frappe.types import DF
 
 		completed_quantity: DF.Int
-		from_date: DF.Date | None
-		item: DF.Link | None
+		from_date: DF.Date
+		item: DF.Link
 		pending_quantity: DF.Int
 		target_quantity: DF.Int
-		to_date: DF.Date | None
+		to_date: DF.Date
 	# end: auto-generated types
 
 	# def onload(self):

@@ -16,17 +16,23 @@
   {
    "fieldname": "from_date",
    "fieldtype": "Date",
-   "label": "From Date"
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
   },
   {
    "fieldname": "to_date",
    "fieldtype": "Date",
-   "label": "To Date"
+   "in_list_view": 1,
+   "label": "To Date",
+   "reqd": 1
   },
   {
    "fieldname": "target_quantity",
    "fieldtype": "Int",
-   "label": "Targeted Quantity"
+   "in_list_view": 1,
+   "label": "Targeted Quantity",
+   "reqd": 1
   },
   {
    "fieldname": "completed_quantity",
@@ -37,8 +43,10 @@
   {
    "fieldname": "item",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Item",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
    "fieldname": "pending_quantity",
@@ -49,7 +57,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-14 14:20:31.420949",
+ "modified": "2024-12-19 09:40:22.759187",
  "modified_by": "Administrator",
  "module": "Bluarmor Lite",
  "name": "Trace Sale",
