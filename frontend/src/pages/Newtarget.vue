@@ -72,8 +72,11 @@ const router = useRouter();
 const items = createListResource({
         doctype:'Item',
         fields:['item_code','item_name'],
-        filters:{},
+        filters:[
+            ["item_code","Like","FG%"],
+        ],
         auto:true,
+        limit:100
         });
 
 const itemsautocompleteoptions = computed(()=>{
