@@ -42,7 +42,7 @@
             </ListView> -->
     <!-- </Card> -->
             <select v-model="targetDetails.item">
-                <option v-for="item in itemsautocompleteoptions" :key="item.item_code" :value="item.item_code">
+                <option v-for="item in itemsautocompleteoptions.slice(0, 100)" :key="item.item_code" :value="item.item_code">
                     {{ item.item_code }}
                 </option>
             </select>
@@ -75,8 +75,7 @@ const items = createListResource({
         filters:[
             ["item_code","Like","FG-%"],
         ],
-        auto:true,
-        limit_page_length:100
+        auto:true
         });
 
 const itemsautocompleteoptions = computed(()=>{
