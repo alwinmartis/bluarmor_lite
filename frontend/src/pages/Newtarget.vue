@@ -73,10 +73,10 @@ const items = createListResource({
         doctype:'Item',
         fields:['item_code','item_name'],
         filters:[
-            ["item_code","Like","FG%"],
+            ["item_code","Like","FG-%"],
         ],
         auto:true,
-        limit:100
+        limit_page_length:100
         });
 
 const itemsautocompleteoptions = computed(()=>{
