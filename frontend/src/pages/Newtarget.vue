@@ -76,7 +76,7 @@ const items = createListResource({
             ["item_code","Like","FG-%"],
         ],
         auto:true,
-        limit_page_length:100
+        length:50,
         });
 console.log(items.list)
 
