@@ -5,13 +5,23 @@ import { userResource } from '@/data/user'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('@/pages/layout/master/Home.vue'),
+    name: 'Master',
+    component: () => import('@/pages/layout/master/master.vue'),
     children: [
       {
         path: '/new-target',
         name: 'CreateTarget',
         component: () => import('@/pages/Target.vue'),
+      },
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/pages/home.vue'),
+      },
+      {
+        path: '/sales',
+        name: 'Sales',
+        component: () => import('@/pages/Sales.vue'),
       },
       {
         path: '/Dashboard',

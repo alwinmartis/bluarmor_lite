@@ -156,7 +156,7 @@ target_quantity:targetDetails.tqty
 
 <style scoped>
 .body{
-    background-color: antiquewhite;
+    background-color:aqua;
 }
 .head{
     display:flex;
@@ -164,12 +164,12 @@ target_quantity:targetDetails.tqty
     justify-content: center;
     align-items: center;
     margin:25px 10px;
-    background-color:azure;
+    background-color: aqua;
 }
 .body-data{
 display:flex;
 justify-content:space-evenly;
-background-color:azure;
+background-color:aqua;
 }
 .body-data-in{
 display:flex;

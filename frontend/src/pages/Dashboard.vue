@@ -73,7 +73,7 @@ salestarget.fetch()
   display: flex;
   justify-content: space-between;
   margin-left: 10px;
-  background-color: beige;
+  background-color:aqua;
   margin-bottom: 2px;
 }
 
