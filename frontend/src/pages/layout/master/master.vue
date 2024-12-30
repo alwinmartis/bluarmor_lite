@@ -7,18 +7,18 @@
             </div>
             <div class="h-[calc(100vh-50px)] navbar-right py-[20px] font-sans flex flex-col justify-between align-between">
                 <div class="px-[20px] flex flex-col space-y-[10px]">
-                    <router-link to="/home" class="hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
+                    <router-link to="/home" class="rounded-md hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
                         Home
                     </router-link> 
-                    <router-link to="/sales" class="hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
+                    <router-link to="/sales" class="rounded-md hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
                         Targets
                     </router-link>
-                    <router-link to="/dashboard" class="hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
+                    <router-link to="/dashboard" class="rounded-md hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
                         Dashboards
                     </router-link>
                 </div>
-                <div>
-                    <router-link to="/dashboard" class="hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
+                <div class="px-[20px] flex flex-col space-y-[10px]">
+                    <router-link to="/dashboard" class="rounded-md hover:bg-white text-xl font-semibold inline-flex relative items-center justify-center py-[20px] w-full">
                         Setting
                     </router-link>
 
@@ -42,8 +42,12 @@
 
     </div>
 </template>
+
+
 <script setup>
 </script>
+
+
 <style>
 .navbar{
     background-color: #383838;

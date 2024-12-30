@@ -9,6 +9,7 @@
     "copy-html-entry": "cp ../bluarmor_lite/public/frontend/index.html ../bluarmor_lite/www/frontend.html"
   },
   "dependencies": {
+    "chart.js": "^4.4.7",
     "feather-icons": "^4.29.2",
     "frappe-ui": "^0.1.72",
     "vue": "^3.5.12",
