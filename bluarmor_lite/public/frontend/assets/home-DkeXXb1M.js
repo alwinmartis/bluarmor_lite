@@ -1,0 +1,1 @@
+import{_ as t,c as o,a as s,o as c}from"./index-LQgHIzQ5.js";const n={},r={class:"flex justify-center item-center"};function a(l,e){return c(),o("div",r,e[0]||(e[0]=[s("p",null,"Welcome to home page",-1)]))}const f=t(n,[["render",a]]);export{f as default};

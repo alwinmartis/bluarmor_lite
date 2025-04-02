@@ -1,0 +1,1 @@
+import{_ as a,c as t,a as s,b as o,w as r,u as n,o as _,d,e as l}from"./index-LQgHIzQ5.js";const u={class:"head"},c={__name:"Target",setup(p){return(f,e)=>(_(),t("div",u,[e[1]||(e[1]=s("p",null,"stay tuned! building........",-1)),o(n(l),null,{default:r(()=>e[0]||(e[0]=[d("Save")])),_:1})]))}},m=a(c,[["__scopeId","data-v-34091f1a"]]);export{m as default};
